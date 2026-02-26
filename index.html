@@ -1,104 +1,150 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Birthday Priyanshi 🎉 — Gravity</title>
-  <style>
-    :root{
-      --bg1:#fff5f7;
-      --bg2:#e0f7fa;
-      --accent:#ff8fab;
-      --accent2:#7bdff2;
-      --text:#444;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Birthday Priyanshi 🎉 — Gravity</title>
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-    }
+<style>
+:root{
+  --bg1:#fff5f7;
+  --bg2:#e0f7fa;
+  --accent:#ff8fab;
+  --accent2:#7bdff2;
+  --text:#444;
+}
 
-    .card{
-      background:white;
-      border-radius:25px;
-      padding:30px;
-      max-width:900px;
-      width:100%;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:30px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.1);
-      position:relative;
-      overflow:hidden;
-    }
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
 
-    @media(max-width:768px){
-      .card{grid-template-columns:1fr;padding:20px}
-    }
+.card{
+  background:white;
+  border-radius:25px;
+  padding:30px;
+  max-width:950px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.1);
+  position:relative;
+  overflow:hidden;
+}
 
-    h1{
-      font-size:clamp(2rem,5vw,3rem);
-      color:var(--accent);
-      margin-bottom:10px;
-    }
+@media(max-width:768px){
+  .card{grid-template-columns:1fr;padding:20px}
+}
 
-    .nickname{
-      font-size:1.1rem;
-      font-weight:bold;
-      color:var(--accent2);
-    }
+h1{
+  font-size:clamp(2rem,5vw,3rem);
+  color:var(--accent);
+  margin-bottom:10px;
+}
 
-    p{
-      margin:15px 0;
-      font-size:1.05rem;
-      line-height:1.6;
-    }
+.nickname{
+  font-size:1.1rem;
+  font-weight:bold;
+  color:var(--accent2);
+}
 
-    .btn{
-      background:var(--accent);
-      border:none;
-      padding:12px 22px;
-      border-radius:50px;
-      font-weight:bold;
-      cursor:pointer;
-      color:white;
-      font-size:1rem;
-      transition:0.3s;
-    }
+p{margin:15px 0;font-size:1.05rem;line-height:1.6}
 
-    .btn:hover{transform:scale(1.05)}
+.btn{
+  background:var(--accent);
+  border:none;
+  padding:12px 22px;
+  border-radius:50px;
+  font-weight:bold;
+  cursor:pointer;
+  color:white;
+  font-size:1rem;
+  transition:0.3s;
+}
 
-    .panel{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-    }
+.btn:hover{transform:scale(1.05)}
 
-    .floating{
-      position:absolute;
-      font-size:30px;
-      animation:float 6s infinite ease-in-out;
-    }
+.panel{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
 
-    .f1{top:10px;left:20px}
-    .f2{bottom:10px;right:20px;animation-delay:2s}
+/* Cake */
+.cake{
+  position:relative;
+  width:160px;
+  height:120px;
+  margin-top:10px;
+}
+.layer{
+  position:absolute;
+  width:160px;
+  height:50px;
+  background:#ffcad4;
+  border-radius:15px;
+  bottom:0;
+}
+.layer.top{
+  height:40px;
+  bottom:50px;
+  background:#ffc8dd;
+}
 
-    @keyframes float{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-15px)}
-    }
+.candle{
+  position:absolute;
+  width:10px;
+  height:40px;
+  background:#fff;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:90px;
+  border-radius:5px;
+}
 
-    canvas{position:fixed;top:0;left:0;pointer-events:none}
+.flame{
+  position:absolute;
+  width:14px;
+  height:18px;
+  background:orange;
+  border-radius:50%;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:125px;
+  animation:flicker 0.2s infinite alternate;
+}
 
-  </style>
+@keyframes flicker{
+  from{transform:translateX(-50%) scale(1)}
+  to{transform:translateX(-50%) scale(1.2)}
+}
+
+.hidden{display:none}
+
+/* Countdown */
+.countdown{
+  margin-top:20px;
+  font-weight:bold;
+  color:#555;
+}
+
+.time{
+  font-size:1.2rem;
+  margin-top:8px;
+  color:var(--accent);
+}
+
+canvas{position:fixed;top:0;left:0;pointer-events:none}
+</style>
 </head>
 <body>
 
@@ -109,32 +155,63 @@
     <h1>Happy Birthday Priyanshi 🎂</h1>
     <div class="nickname">My Gravity 💫</div>
     <p>
-      To the one who keeps everything balanced and beautiful —
-      may your year be filled with happiness, panda hugs 🐼,
-      laughter, love, and endless magical moments.
+      May your year be filled with happiness, panda hugs 🐼,
+      laughter, love, and magical memories.
     </p>
-    <button class="btn" onclick="celebrate()">Celebrate 🎉</button>
+    <button class="btn" onclick="blowCandle()">Blow the Candle 🕯️</button>
+
+    <div class="countdown">
+      Countdown to Next Birthday 🎉
+      <div class="time" id="timer"></div>
+    </div>
   </div>
 
   <div class="panel">
-    <div style="font-size:120px">🐼</div>
-    <h2 style="margin-top:10px;color:var(--accent)">Have the Cutest Birthday Ever!</h2>
+    <div class="cake">
+      <div class="layer"></div>
+      <div class="layer top"></div>
+      <div class="candle"></div>
+      <div class="flame" id="flame"></div>
+    </div>
+    <h2 style="margin-top:15px;color:var(--accent)">Make a Wish ✨</h2>
   </div>
-
-  <div class="floating f1">🎈</div>
-  <div class="floating f2">💖</div>
 </div>
 
 <script>
+/* Countdown Logic */
+function updateCountdown(){
+  const now=new Date();
+  const year=now.getFullYear();
+  let nextBirthday=new Date(year,1,27); // Feb 27
+  if(now>nextBirthday){
+    nextBirthday=new Date(year+1,1,27);
+  }
+  const diff=nextBirthday-now;
+  const days=Math.floor(diff/(1000*60*60*24));
+  const hours=Math.floor((diff/(1000*60*60))%24);
+  const mins=Math.floor((diff/(1000*60))%60);
+  const secs=Math.floor((diff/1000)%60);
+  document.getElementById("timer").innerHTML=
+    `${days} Days ${hours} Hrs ${mins} Min ${secs} Sec`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* Blow Candle */
+function blowCandle(){
+  document.getElementById("flame").classList.add("hidden");
+  celebrate();
+}
+
+/* Confetti */
 const canvas=document.getElementById('confetti');
 const ctx=canvas.getContext('2d');
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
-
 let pieces=[];
 
 function celebrate(){
-  for(let i=0;i<150;i++){
+  for(let i=0;i<120;i++){
     pieces.push({
       x:window.innerWidth/2,
       y:window.innerHeight/2,
