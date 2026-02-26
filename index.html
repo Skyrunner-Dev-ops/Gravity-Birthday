@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday Priyanshi 🎉 — Gravity</title>
+  <style>
+    :root{
+      --bg1:#fff5f7;
+      --bg2:#e0f7fa;
+      --accent:#ff8fab;
+      --accent2:#7bdff2;
+      --text:#444;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .card{
+      background:white;
+      border-radius:25px;
+      padding:30px;
+      max-width:900px;
+      width:100%;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.1);
+      position:relative;
+      overflow:hidden;
+    }
+
+    @media(max-width:768px){
+      .card{grid-template-columns:1fr;padding:20px}
+    }
+
+    h1{
+      font-size:clamp(2rem,5vw,3rem);
+      color:var(--accent);
+      margin-bottom:10px;
+    }
+
+    .nickname{
+      font-size:1.1rem;
+      font-weight:bold;
+      color:var(--accent2);
+    }
+
+    p{
+      margin:15px 0;
+      font-size:1.05rem;
+      line-height:1.6;
+    }
+
+    .btn{
+      background:var(--accent);
+      border:none;
+      padding:12px 22px;
+      border-radius:50px;
+      font-weight:bold;
+      cursor:pointer;
+      color:white;
+      font-size:1rem;
+      transition:0.3s;
+    }
+
+    .btn:hover{transform:scale(1.05)}
+
+    .panel{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+
+    .floating{
+      position:absolute;
+      font-size:30px;
+      animation:float 6s infinite ease-in-out;
+    }
+
+    .f1{top:10px;left:20px}
+    .f2{bottom:10px;right:20px;animation-delay:2s}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-15px)}
+    }
+
+    canvas{position:fixed;top:0;left:0;pointer-events:none}
+
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="card">
+  <div>
+    <h1>Happy Birthday Priyanshi 🎂</h1>
+    <div class="nickname">My Gravity 💫</div>
+    <p>
+      To the one who keeps everything balanced and beautiful —
+      may your year be filled with happiness, panda hugs 🐼,
+      laughter, love, and endless magical moments.
+    </p>
+    <button class="btn" onclick="celebrate()">Celebrate 🎉</button>
+  </div>
+
+  <div class="panel">
+    <div style="font-size:120px">🐼</div>
+    <h2 style="margin-top:10px;color:var(--accent)">Have the Cutest Birthday Ever!</h2>
+  </div>
+
+  <div class="floating f1">🎈</div>
+  <div class="floating f2">💖</div>
+</div>
+
+<script>
+const canvas=document.getElementById('confetti');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let pieces=[];
+
+function celebrate(){
+  for(let i=0;i<150;i++){
+    pieces.push({
+      x:window.innerWidth/2,
+      y:window.innerHeight/2,
+      size:Math.random()*8+4,
+      speedX:(Math.random()-0.5)*6,
+      speedY:(Math.random()-0.5)*6,
+      color:`hsl(${Math.random()*360},70%,70%)`
+    });
+  }
+}
+
+function update(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  pieces.forEach(p=>{
+    p.x+=p.speedX;
+    p.y+=p.speedY;
+    p.speedY+=0.05;
+    ctx.fillStyle=p.color;
+    ctx.fillRect(p.x,p.y,p.size,p.size);
+  });
+  requestAnimationFrame(update);
+}
+update();
+
+window.addEventListener('resize',()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+</script>
+
+</body>
+</html>
